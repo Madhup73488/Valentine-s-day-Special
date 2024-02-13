@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day Special</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('/bgsystem.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+            text-align: center;
+            position: relative;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 25px;
+            margin-bottom: 0px;
+            color: rgb(255, 77, 77);
+            text-shadow: 0px 0px 100px rgb(255, 77, 77);
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #fff7f7;
+        }
+
+        #text {
+            border-right: 1px solid #000;
+            white-space: nowrap;
+            overflow: hidden;
+            font-size: 20px;
+            animation: typing 3s steps(40, end);
+            color: white;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+        }
+
+        .heart {
+            color: red;
+            font-size: 24px;
+        }
+
+        .fixed-bottom {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0px;
+            margin-bottom: 0px;
+
+        }
+
+        h4 {
+            text-shadow: 0px 0px 5px rgb(255, 250, 250);
+            color: yellow;
+        }
+
+        #progress-container {
+            width: 100%;
+            height: 5px;
+            background-color: #ccc;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        #progress-bar {
+            height: 100%;
+            background-color: #ff4d4d;
+            width: 0;
+            transition: width 0.5s ease;
+        }
+
+        @media only screen and (max-width: 767px) {
+            body {
+                background: url('bgphone.jpg') no-repeat center center fixed;
+                background-size: cover;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <audio autoplay>
+        <source src="/bgmusic.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <div id="progress-container">
+        <div id="progress-bar"></div>
+    </div>
+    <div class="container">
+        <h1>Happy Valentine's Day!</h1>
+        <div class="container">
+            <h3><span id="username"></span></h3>
+            <div id="text"></div>
+        </div>
+        <div class="fixed-bottom">
+            <h4>Spread love, laughter,<br> and joy on this special day!</h4>
+        </div>
+    </div>
+
+    <script>
+        var username = localStorage.getItem("username");
+        var strings = [`Hello, ${username} ❤️\n`,
+            "\nMy dearest love",
+            "\nOn this special day,\n I want to express ❤️",
+            "\nmy deepest affection \nand gratitude ❤️",
+            "\nfor your presence in my life.\n",
+            "\nYou fill my days with joy,",
+            "\nwarmth, and laughter, 😊",
+            "\nand I cherish every moment",
+            "\nwe spend together.\n",
+            "\nHappy Valentine's Day, 💖",
+            "\nmy beloved!",
+            "\nI love you now and forever\n❤️",];
+
+        var index = 0;
+
+        function typeNextString() {
+            var textElement = document.getElementById('text');
+            if (index < strings.length) {
+                var currentString = strings[index];
+                textElement.innerText += currentString;
+                index++;
+                updateProgressBar();
+            } else {
+                clearInterval(intervalId);
+            }
+        }
+
+        function updateProgressBar() {
+            var progress = (index / strings.length) * 100;
+            document.getElementById('progress-bar').style.width = progress + '%';
+        }
+
+        var intervalId = setInterval(typeNextString, 1800);
+        typeNextString();
+    </script>
+</body>
+
+</html>

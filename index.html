@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            font-size: 58px;
+            color: rgb(255, 77, 77);
+            text-shadow: 0px 0px 20px rgb(255, 77, 77);
+            margin-bottom: 30px;
+        }
+
+        div {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        input[type="text"] {
+            width: 300px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #ff4d4d;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #e60000;
+        }
+
+        /* Responsive styles */
+        @media only screen and (max-width: 600px) {
+            h1 {
+                font-size: 58px;
+            }
+
+            input[type="text"] {
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Welcome</h1>
+    <div>
+        <label for="nameInput">Enter your name Please:</label><br>
+        <input type="text" id="nameInput">
+        <button onclick="saveName()">Go</button>
+    </div>
+    <script>
+        function saveName() {
+            var name = document.getElementById("nameInput").value;
+            localStorage.setItem("username", name);
+            window.location.href = "valentinepage.html";
+        }
+    </script>
+</body>
+
+</html>
